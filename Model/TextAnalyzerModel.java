@@ -23,6 +23,15 @@ public class TextAnalyzerModel {
                 .collect(Collectors.toList());
     }
 
+    public String findLongestWord() {
+        if (words == null || words.isEmpty()) {
+            return null;
+        }
+        return words.stream()
+                .max(Comparator.comparingInt(String::length))
+                .orElse(null);
+    }
+
     public void analyze() {
         if (words == null || words.isEmpty()) {
             throw new IllegalStateException("Текст не загружен");
@@ -31,8 +40,9 @@ public class TextAnalyzerModel {
         int totalWords = words.size();
         int uniqueWordsCount = calculateUniqueWords();
         List<WordFrequency> topFrequentWords = calculateTopFrequentWords(20);
+        String longestWord = findLongestWord();
 
-        this.result = new AnalysisResult(totalWords, uniqueWordsCount, topFrequentWords);
+        this.result = new AnalysisResult(totalWords, uniqueWordsCount, topFrequentWords, longestWord);
     }
 
     private int calculateUniqueWords() {

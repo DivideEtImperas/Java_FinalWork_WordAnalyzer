@@ -8,12 +8,13 @@ public class WordAnalyzerMVC {
         try {
             String filePath = "input.txt";
 
+            // Инициализация компонентов MVC
             TextAnalyzerModel model = new TextAnalyzerModel();
             ConsoleView view = new ConsoleView();
             TextAnalyzerController controller = new TextAnalyzerController(model, view);
 
+            // Запуск программы
             controller.analyzeTextFromFile(filePath);
-
         } catch (Exception e) {
             System.err.println("Ошибка: " + e.getMessage());
         }
