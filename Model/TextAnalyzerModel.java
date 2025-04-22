@@ -1,13 +1,12 @@
 package Model;
 
-import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class model {
+public class TextAnalyzerModel {
     private List<String> words;
     private AnalysisResult result;
 
@@ -56,52 +55,4 @@ public class model {
     public AnalysisResult getAnalysisResult() {
         return result;
     }
-
-    // Вспомогательный класс для хранения результатов
-    public class AnalysisResult {
-        private final int totalWords;
-        private final int uniqueWordsCount;
-        private final List<WordFrequency> topFrequentWords;
-
-        public AnalysisResult(int totalWords, int uniqueWordsCount, List<WordFrequency> topFrequentWords) {
-            this.totalWords = totalWords;
-            this.uniqueWordsCount = uniqueWordsCount;
-            this.topFrequentWords = topFrequentWords;
-        }
-
-        // Геттеры
-        public int getTotalWords() {
-            return totalWords;
-        }
-
-        public int getUniqueWordsCount() {
-            return uniqueWordsCount;
-        }
-
-        public List<WordFrequency> getTopFrequentWords() {
-            return topFrequentWords;
-        }
-
-        // Класс для хранения информации о частоте слов
-        class WordFrequency {
-            private final String word;
-            private final int frequency;
-
-            public WordFrequency(String word, int frequency) {
-                this.word = word;
-                this.frequency = frequency;
-            }
-
-            // Геттеры
-            public String getWord() {
-                return word;
-            }
-
-            public int getFrequency() {
-                return frequency;
-            }
-        }
-
-    }
-
 }
